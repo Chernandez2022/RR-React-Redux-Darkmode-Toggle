@@ -1,7 +1,23 @@
-import './App.css';
-import { useSelector, useDispatch } from 'react-redux'
+import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.data);
+
+  const renderImg = () => {
+    if (data.apiData) {
+      return (
+        <img
+          style={{ width: "90vw" }}
+          src={data.apiData.primaryImage}
+          alt={data.apiData.title}
+        />
+      );
+    } else {
+      return <p>image</p>;
+    }
+  };
   // your logic goes here!
 
   return (
@@ -12,9 +28,15 @@ function App() {
         <button onClick={() => {}}>Next</button>
         <button onClick={() => {}}>Back</button>
       </div>
-      <input onChange={(e) => { }} />
+      <input
+        value={data.ObjectId}
+        onChange={(e) => {
+          dispatch(inputId(Number(e.target.value)));
+        }}
+      />
       <div>
-        {/* Once you have plugged everything in, render the image here! */}
+        {data.ObjectId}
+        {renderImg()}
       </div>
     </div>
   );
