@@ -1,5 +1,12 @@
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  clearData,
+  fetchData,
+  incrementId,
+  decrementId,
+  inputId,
+} from "./features/dataslice";
 
 function App() {
   const dispatch = useDispatch();
